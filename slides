@@ -1,0 +1,58 @@
+#Exercicico 1
+package main
+
+import "fmt"
+
+func swap(a *int, b *int) (int, int) {
+	x := *a
+	y := *b
+	*a = y
+	*b = x
+	return *a, *b
+}
+
+func main() {
+	x := 10
+	y := 20
+	resultado1, resultado2 := swap(&x, &y)
+	fmt.Print(resultado1, resultado2)
+}
+
+#Exercicico 2
+package main
+
+import "fmt"
+
+func boolean(a *bool) bool {
+	x := *a
+	x = !x
+	return x
+}
+
+func main() {
+	x := false
+	resultado := boolean(&x)
+	fmt.Print(resultado)
+}
+#Exercicico 3
+package main
+
+import "fmt"
+
+type Produto struct {
+	nome    string
+	preco   int
+	quantia int
+}
+
+func novopreco(a *int, p *Produto) int {
+	p.preco = *a
+	return p.preco
+}
+
+func main() {
+	produto := Produto{nome: "Carne", preco: 40, quantia: 100}
+	novovalor := 30
+	resultado := novopreco(&novovalor, &produto)
+	fmt.Print(resultado)
+}
